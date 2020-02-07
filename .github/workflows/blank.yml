@@ -1,4 +1,4 @@
-name: CI
+name: test-workflow
 
 on: [push]
 
@@ -14,7 +14,10 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
     - name: Testing env variables
-      env: 
+      
+      if: startsWith(github.ref, 'refs/heads/master')
+      env:
         test1: test1-value
         test2: test2-value
+      
       run: echo $test1
