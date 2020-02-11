@@ -6,7 +6,7 @@ on:
       - PROD-MIYAZAKI-CODE-*
 
 jobs:
-  build:
+  get commit id from tag name:
     runs-on: ubuntu-latest
     steps:
     - name: checkout code
@@ -14,6 +14,5 @@ jobs:
     - name: printing cotext values
       run: |
         echo "github ref ${{ github.ref }}"
-        echo "tag name to be parsed here"
-        echo "${{ github.head_ref }}"
-        echo "${{ github.base_ref }}"
+        export BRANCH_TAG=`printf $(cut -d- -f4 <<< ${{ github.ref }})`
+	echo $BRANCH_TAG
