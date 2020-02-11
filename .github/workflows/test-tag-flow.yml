@@ -1,0 +1,18 @@
+name: test-tag-workflow
+
+on: [push]
+on:
+  push:
+    tags:
+      - PROD-MIYAZAKI-CODE-*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v2
+    - name: printing cotext values
+      run: |
+        echo "github ref ${{ github.ref }}"
+        echo "tag name to be parsed here"
