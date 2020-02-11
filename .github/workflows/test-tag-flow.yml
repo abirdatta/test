@@ -15,3 +15,5 @@ jobs:
       run: |
         echo "github ref ${{ github.ref }}"
         echo "tag name to be parsed here"
+	echo "${{ github.head_ref }}"
+        echo "${{ github.base_ref }}"
