@@ -1,6 +1,5 @@
 name: test-tag-workflow
 
-on: [push]
 on:
   push:
     tags:
