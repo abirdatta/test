@@ -15,4 +15,4 @@ jobs:
       run: |
         echo "github ref ${{ github.ref }}"
         export BRANCH_TAG=`printf $(cut -d- -f4 <<< ${{ github.ref }})`
-	echo $BRANCH_TAG
+        echo $BRANCH_TAG
