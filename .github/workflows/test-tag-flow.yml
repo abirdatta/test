@@ -6,7 +6,7 @@ on:
       - PROD-MIYAZAKI-CODE-*
 
 jobs:
-  get commit id from tag name:
+  get-commit-id-from-tag-name:
     runs-on: ubuntu-latest
     steps:
     - name: checkout code
