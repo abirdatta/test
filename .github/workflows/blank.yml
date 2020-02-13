@@ -3,7 +3,7 @@ name: test-workflow
 on: [push]
 
 jobs:
-  build:
+  test-workflow-features:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -20,9 +20,12 @@ jobs:
         echo ${{ toJson(github.head_ref) }}
     - name: Testing env variables
       
-      if: startsWith(github.ref, 'refs/heads/master1')
+      if: startsWith(github.ref, 'refs/heads/master')
       env:
         test1: test1-value
         test2: test2-value
+        BRANCH_COMMIT_ID: ${{ toJson(github.head_ref) }}
       
-      run: echo $test1
+      run: |
+        echo $test1
+        echo $BRANCH_COMMIT_ID
