@@ -13,8 +13,11 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+        echo ${{ toJson(github.head_ref) }}
     - name: printing cotext values
-      run: echo "${{ github.ref }}"
+      run: |
+        echo "${{ github.ref }}"
+        echo ${{ toJson(github.head_ref) }}
     - name: Testing env variables
       
       if: startsWith(github.ref, 'refs/heads/master1')

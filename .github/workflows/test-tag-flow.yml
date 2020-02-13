@@ -16,3 +16,4 @@ jobs:
         echo "github ref ${{ github.ref }}"
         export BRANCH_TAG=`printf $(cut -d- -f4 <<< ${{ github.ref }})`
         echo $BRANCH_TAG
+        echo ${{ toJson(github.head_ref) }}
