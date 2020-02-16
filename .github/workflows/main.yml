@@ -8,11 +8,19 @@ on:
       - prod-*       
 
 jobs:
-  set env variables {{ github.ref }}:
+  set env variables:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      name: Code CHeckout
+      name: Code Checkout
+    - name: set env variables according to ref name
+      run: |
+        tag_name={{ github.ref }}
+        if [[ $tag_name == /ref/tags/test* ]]; then
+          echo "test tag"
+        else
+            echo "$tag_name"
+        fi
       
     - name: Run a multi-line script
       run: |
