@@ -16,7 +16,7 @@ jobs:
     - name: set env variables according to ref name
       run: |
         tag_name=${GITHUB_REF}
-        if [[ $tag_name == /ref/tags/test* ]]; then
+        if [[ $tag_name == "/ref/tags/test"* ]]; then
           echo "test tag"
         else
             echo "$tag_name"
