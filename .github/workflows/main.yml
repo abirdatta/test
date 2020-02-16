@@ -1,0 +1,20 @@
+name: test env variables accross jobs
+
+on:
+  push:
+    tags: 
+      - dev-*
+      - test-*
+      - prod-*       
+
+jobs:
+  set env variables {{ github.ref }}:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      name: Code CHeckout
+      
+    - name: Run a multi-line script
+      run: |
+        echo {{ github.ref }}
+        echo {{ secrets.test }}
