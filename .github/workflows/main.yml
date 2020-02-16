@@ -16,7 +16,7 @@ jobs:
     - name: set env variables according to ref name
       run: |
         tag_name=${GITHUB_REF}
-        if [[ $tag_name == "/ref/tags/test"* ]]; then
+        if [[ $tag_name == "refs/tags/test"* ]]; then
           echo "test tag"
         else
             echo "$tag_name"
@@ -26,5 +26,11 @@ jobs:
               
     - name: Run a multi-line script
       run: |
-        echo {{ github.ref }}
-        echo {{ secrets.test }}
+        echo ${GITHUB_REF}
+        echo test
+  
+  test-env-from-prev-job:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: print previous jobs ebnv var
+        run: echo ${GITHUB_REF}
