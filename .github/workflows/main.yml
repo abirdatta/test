@@ -15,13 +15,15 @@ jobs:
       name: Code Checkout
     - name: set env variables according to ref name
       run: |
-        tag_name={{ github.ref }}
+        tag_name=${GITHUB_REF}
         if [[ $tag_name == /ref/tags/test* ]]; then
           echo "test tag"
         else
             echo "$tag_name"
         fi
-      
+      env:
+        GITHUB_REF: ${{ github.ref }}
+              
     - name: Run a multi-line script
       run: |
         echo {{ github.ref }}
