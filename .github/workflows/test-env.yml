@@ -26,11 +26,6 @@ jobs:
           echo "TF_WORKSPACE - $TF_WORKSPACE"
           echo "AWS_ACCESS_KEY_ID - $AWS_ACCESS_KEY_ID"
           echo "AWS_ACCESS_KEY_ID_DIRECT - $AWS_ACCESS_KEY_ID_DIRECT"
-        env:
-          TF_WORKSPACE: ${TF_WORKSPACE}
-          AWS_ACCESS_KEY_ID_DIRECT: ${AWS_ACCESS_KEY_ID_DIRECT}
-          test: ${deployment_env}
-          test_print: "this should print"
 
       - name: print-env-vars
         run: |
