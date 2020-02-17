@@ -3,9 +3,9 @@ name: test env variables accross jobs
 on:
   push:
     tags: 
-      - dev-*
-      - test-*
-      - prod-*       
+      - dev1-*
+      - test1-*
+      - prod1-*       
 
 jobs:
   set-env-variables:
