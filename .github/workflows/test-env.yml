@@ -1,0 +1,38 @@
+name: test-config-deploy
+on:
+  push:
+    tags:
+      - test-config-play-*
+      - test-config-dev-*
+      - test-config-stag-*
+      - test-config-prod-*
+
+jobs:
+  setup-env-for-deploynent:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: set-env
+        run: |
+          deployment_env=`printf $(cut -d- -f3 <<< ${{ github.ref }})`
+          deployment_env_upper=`echo ${deployment_env} | tr a-z A-Z`
+          echo $deployment_env
+          echo $deployment_env_upper
+          export TF_WORKSPACE=${deployment_env}
+          export TF_IN_AUTOMATION=true
+          export TF_WORKSPACE=${deployment_env}
+          export AWS_ACCESS_KEY_ID=${{ secrets.AWS_{deployment_env_upper}_ACCESS_KEY }}
+          export AWS_ACCESS_KEY_ID_DIRECT=${{ secrets.AWS_DEV_ACCESS_KEY }}
+          echo $TF_WORKSPACE
+          echo $TF_IN_AUTOMATION
+          echo $TF_WORKSPACE
+          echo $AWS_ACCESS_KEY_ID
+          echo $AWS_ACCESS_KEY_ID_DIRECT
+  print-env-vars-from-prev-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print environment variables from previous job
+        run: |
+          echo $TF_WORKSPACE
+          echo $TF_IN_AUTOMATION
+          echo $TF_WORKSPACE
+          echo $AWS_ACCESS_KEY_ID
