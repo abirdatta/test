@@ -26,6 +26,9 @@ jobs:
           echo "TF_WORKSPACE - $TF_WORKSPACE"
           echo "AWS_ACCESS_KEY_ID - $AWS_ACCESS_KEY_ID"
           echo "AWS_ACCESS_KEY_ID_DIRECT - $AWS_ACCESS_KEY_ID_DIRECT"
+        env:
+          TF_WORKSPACE: ${TF_WORKSPACE}
+          AWS_ACCESS_KEY_ID_DIRECT: ${AWS_ACCESS_KEY_ID_DIRECT}
   print-env-vars-from-prev-job:
     runs-on: ubuntu-latest
     needs: [setup-env-for-deploynent]
