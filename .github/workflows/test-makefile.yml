@@ -14,4 +14,4 @@ jobs:
     - name: make file test
       run: make test
       env:
-        TF_FILE_PATHS: "a,b/c,d"
+        TF_FILE_PATHS: "a b/c d"
