@@ -1,19 +1,17 @@
-name: test-tag-workflow
+name: test-makefile-workflow
 
 on:
   push:
-    tags:
-      - PROD-MIYAZAKI-CODE-*
+    branches:
+      - master
 
 jobs:
-  get-commit-id-from-tag-name:
+  test-make:
     runs-on: ubuntu-latest
     steps:
     - name: checkout code
       uses: actions/checkout@v2
-    - name: printing cotext values
-      run: |
-        echo "github ref ${{ github.ref }}"
-        export BRANCH_TAG=`printf $(cut -d- -f4 <<< ${{ github.ref }})`
-        echo $BRANCH_TAG
-        echo ${{ toJson(github.head_ref) }}
+    - name: make file test
+      run: make test
+      env:
+        TF_FILE_PATHS: "a,b/c,d"
