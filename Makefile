@@ -7,5 +7,6 @@ test:
 		echo $$TF_FILE_PATH; \
 		cd $$CWD/..; \
 		echo `pwd`; \
+		echo 1; \
 	done; \
 	}
